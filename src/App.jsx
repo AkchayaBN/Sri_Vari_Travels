@@ -5,8 +5,6 @@ import { VehicleShowcaseSection } from './components/sections/VehicleShowcaseSec
 import { PricingSection } from './components/sections/PricingSection'
 import { PackagesSection } from './components/sections/PackagesSection'
 import { DriverSection } from './components/sections/DriverSection'
-import { LocationsSection } from './components/sections/LocationsSection'
-import { TestimonialsSection } from './components/sections/TestimonialsSection'
 import { ContactSection } from './components/sections/ContactSection'
 import { Footer } from './components/Footer'
 
@@ -21,8 +19,6 @@ function App() {
         <PricingSection />
         <PackagesSection />
         <DriverSection />
-        <LocationsSection />
-        <TestimonialsSection />
         <ContactSection />
       </main>
       <Footer />

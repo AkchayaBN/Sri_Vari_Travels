@@ -10,28 +10,29 @@ export const navLinks = [
 export const brand = {
   name: 'Sri Vari Travels',
   tagline: '18 years of service',
-  tamilTagline: 'பாதுகாப்பான குடும்ப பயணம்',
+  tamilTagline: 'எளிதில் செல்லும் நம்பகமான பயணம்',
   logoPath: '/images/ICON.jpeg',
 }
 
 export const heroStats = [
   { value: '24/7', label: 'Easy booking help' },
-  { value: 'Group', label: 'Good for family trips' },
+  { value: 'Group', label: 'Good for Family / Friends tour' },
   { value: 'Temple', label: 'Good for temple tours' },
 ]
+// Note: Removed duplicate/general text blocks. Keep gallery (images/videos) and concise package/pricing info below.
 
 export const introCards = [
   {
-    title: 'Easy booking',
-    description: 'Call or message us for temple trips, family trips, and small group travel.',
+    title: 'Easy Booking',
+    description: 'Call or WhatsApp for quick reservations and itinerary help.',
   },
   {
-    title: 'Comfortable travel',
-    description: 'Our van is good for family travel, outstation rides, and local sightseeing.',
+    title: 'Comfortable Travel',
+    description: 'Well-maintained van with seating suited for family trips.',
   },
   {
-    title: 'Flexible service',
-    description: 'We support one-day trips, per-kilometer booking, and custom travel plans.',
+    title: 'Flexible Options',
+    description: 'One-day trips, per-km bookings and tailored packages available.',
   },
 ]
 
@@ -77,6 +78,11 @@ export const vehicleGallery = [
     alt: 'Driver standing in front of Sri Vari Travels van',
   },
   {
+    title: 'Latest gallery photo',
+    image: '/images/svt-van-new-2026-06-29.jpeg',
+    alt: 'Latest Sri Vari Travels van photo added to the gallery',
+  },
+  {
     title: 'Inside tour',
     image: '/images/inside-tour.mp4',
     thumbnail: '/images/inside-tour-thumb.jpg',
@@ -88,49 +94,82 @@ export const vehicleGallery = [
 export const pricingCards = [
   {
     title: 'Daily Rental',
-    price: 'From Rs. 2,800/day',
-    description: 'Good for local trips, family travel, and full-day use.',
-    features: ['Driver included', 'Flexible start time', 'Best for full-day travel'],
+    price: `From Rs. ${3500}/day`,
+    description: 'Van rent per day. Driver charges extra as specified.',
+    features: ['Ideal for full-day local or outstation use', 'Driver included separately'],
   },
   {
     title: 'Per Kilometer',
-    price: 'From Rs. 16/km',
-    description: 'Good for outstation rides, temple tours, and city-to-city trips.',
-    features: ['Clear rate', 'One-way or round trip', 'Distance-based charge'],
+    price: `From Rs. ${18}/km`,
+    description: 'Distance-based pricing for outstation and point-to-point travel.',
+    features: ['Clear distance rate', 'One-way or round-trip options'],
   },
 ]
+
+export const pricingInfo = {
+  vanRentPerDay: 3500, // INR
+  driverPerDay: 300, // INR
+  perKilometer: 18, // INR/km
+  longDistancePerKilometer: 25, // INR/km for distance beyond 300 km
+  exclusions: ['Parking', 'Tolls', 'Permits (required for travel beyond Tamil Nadu)'],
+  note: 'Final price depends on route, stops and travel dates. Contact or WhatsApp for an accurate pricing details.',
+}
 
 export const pricingNotes = [
-  'Toll, parking, and permit charges may be extra.',
-  'Night charge or waiting charge may apply for long trips.',
-  'Please confirm the final price before booking.',
+  'Parking, tolls and permit charges are not included.',
+  'Waiting or night charges may apply for extended hours.',
+  'Contact or WhatsApp for the final, route-specific quote.',
 ]
 
-export const packages = [
+
+export const packageTravelInfo = {
+  title: 'Places to travel',
+  description:
+    'Courtallam, Iyappan Temple, customised temple tours (within Tamil Nadu), Ooty, Munnar, Kodaikanal, Rameshwaram, Kanyakumari and more.',
+  note: 'Routes can also be customised based on your family trip, temple visit or hill-station plan.',
+  places: [
+    'Courtallam',
+    'Iyappan Temple',
+    'Customised temple tours within Tamil Nadu',
+    'Ooty',
+    'Munnar',
+    'Kodaikanal',
+    'Rameshwaram',
+    'Kanyakumari',
+  ],
+}
+
+export const spotLocations = [
+  'Courtallam',
+  "Iyappan Temple",
+  'Ooty',
+  'Munnar',
+  'Kodaikanal',
+  'Rameshwaram',
+  'Kanyakumari',
+]
+
+export const contactCards = [
   {
-    title: 'Temple Trip',
-    image: '/images/package-temple.svg',
-    description: 'Simple package for temple visits with safe travel and easy stops.',
-    highlights: ['Morning start', 'Easy temple timing', 'Good for families'],
+    title: 'Phone',
+    value: '+91 90434 22294',
+    href: 'tel:+919043422294',
   },
   {
-    title: 'Hill Trip',
-    image: '/images/package-hills.svg',
-    description: 'Simple hill station travel for a peaceful day trip or weekend plan.',
-    highlights: ['Photo stops', 'Meal break option', 'Weekend-friendly'],
-  },
-  {
-    title: 'Airport Trip',
-    image: '/images/package-airport.svg',
-    description: 'Easy airport pickup and drop service with on-time support.',
-    highlights: ['On-time pickup', 'Flight timing support', 'Direct travel'],
+    title: 'WhatsApp',
+    value: 'Message for quick booking',
+    href: 'https://wa.me/919025257336',
   },
 ]
+
+export const contactLocation = {
+  address: '152 South Perumail Maistry Street, South Gate, Madurai',
+}
 
 export const driverHighlights = [
-  'Experienced driver for local and outstation trips',
-  'Friendly service and good route knowledge',
-  'Safe driving and flexible travel support',
+  'Experienced local driver with good route knowledge',
+  'Polite and patient service suited for families and elders',
+  'Flexible timing and safe driving practices',
 ]
 
 export const locations = [
@@ -157,23 +196,5 @@ export const testimonials = [
     name: 'Mohan P.',
     trip: 'Temple trip',
     quote: 'Very patient driver and good support during our temple visit.',
-  },
-]
-
-export const contactCards = [
-  {
-    title: 'Phone',
-    value: '+91 90434 22294',
-    href: 'tel:+919043422294',
-  },
-  {
-    title: 'WhatsApp',
-    value: 'Message for quick booking',
-    href: 'https://wa.me/919025257336',
-  },
-  {
-    title: 'Location',
-    value: 'Placeholder business address, Andhra Pradesh',
-    href: '#contact',
   },
 ]

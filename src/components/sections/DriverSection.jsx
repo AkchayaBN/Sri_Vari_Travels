@@ -1,7 +1,6 @@
 import { driverHighlights } from '../../data/siteContent'
 import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
-import { Button } from '../common/Button'
 
 export function DriverSection() {
   return (
@@ -25,7 +24,7 @@ export function DriverSection() {
               eyebrow="Driver"
               title="Friendly and safe driver service."
               subtitle="நட்பு மனப்பான்மை மற்றும் பாதுகாப்பான ஓட்டுநர் சேவை"
-              description="Use this section to show driver experience, local route knowledge, and safe service."
+              
             />
             <div className="mt-8 space-y-4">
               {driverHighlights.map((highlight) => (
@@ -36,14 +35,6 @@ export function DriverSection() {
                   <p className="text-base leading-7 text-slate-600">{highlight}</p>
                 </div>
               ))}
-            </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button as="a" href="#contact">
-                Contact Us
-              </Button>
-              <Button as="a" href="tel:+919043422294" variant="secondary">
-                Call Now
-              </Button>
             </div>
           </Reveal>
         </div>

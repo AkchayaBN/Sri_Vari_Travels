@@ -21,6 +21,7 @@ export function VehicleShowcaseSection() {
   }, [isLightboxOpen])
 
   const activeImage = vehicleGallery[activeIndex]
+  const activePreview = activeImage.isVideo ? activeImage.thumbnail : activeImage.image
 
   const handleSwipe = (direction) => {
     if (direction === 'left') {
@@ -47,83 +48,112 @@ export function VehicleShowcaseSection() {
             eyebrow="Vehicle"
             title="See our Sri Vari Travels van."
             subtitle="எங்கள் வாகனத்தை பாருங்கள்"
-            description="These are real photos of our van. More photos can be added later."
+            description="Browse real photos of our van in a clean gallery view. Tap any image to open it large."
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="mt-12">
           <Reveal>
-            <article className="glass-card overflow-hidden p-4 sm:p-5">
-              <motion.button
-                type="button"
-                className="w-full overflow-hidden rounded-[24px] bg-gradient-to-br from-brand-50 to-accent-50 cursor-grab active:cursor-grabbing relative"
-                onClick={() => setIsLightboxOpen(true)}
-                drag="x"
-                dragElastic={0.2}
-                onDragEnd={handleDragEnd}
-                dragConstraints={{ left: 0, right: 0 }}
-              >
-                {activeImage.isVideo ? (
-                  <>
-                    <img
-                      key={activeImage.thumbnail}
-                      src={activeImage.thumbnail}
-                      alt={activeImage.alt}
-                      className="max-h-[560px] w-full rounded-[24px] object-cover"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-[24px]">
-                      <svg className="h-16 w-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                      </svg>
-                    </div>
-                  </>
-                ) : (
+            <article className="glass-card overflow-hidden p-4 sm:p-5 lg:p-6">
+              <div className="rounded-[28px] border border-white/80 bg-gradient-to-br from-brand-50/90 via-white to-accent-50/90 p-3 sm:p-4">
+                <motion.button
+                  type="button"
+                  className="relative w-full cursor-grab overflow-hidden rounded-[24px] bg-white active:cursor-grabbing"
+                  onClick={() => setIsLightboxOpen(true)}
+                  drag="x"
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
+                  dragConstraints={{ left: 0, right: 0 }}
+                >
                   <motion.img
-                    key={activeImage.image}
-                    src={activeImage.image}
+                    key={activePreview}
+                    src={activePreview}
                     alt={activeImage.alt}
-                    className="max-h-[560px] w-full rounded-[24px] object-cover"
+                    className="h-[300px] w-full rounded-[24px] object-cover sm:h-[420px] lg:h-[560px]"
                     initial={{ opacity: 0.2, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.35 }}
                   />
-                )}
-              </motion.button>
-            </article>
-          </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
-            {vehicleGallery.map((item, index) => (
-              <Reveal key={item.title} delay={index * 0.06}>
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  className={`glass-card flex h-full items-center gap-4 p-4 text-left transition hover:-translate-y-1 ${
-                    activeIndex === index ? 'ring-2 ring-brand-300' : 'ring-1 ring-transparent'
-                  }`}
-                >
-                  <div className="relative h-20 w-24 rounded-2xl overflow-hidden bg-slate-100">
-                    {item.isVideo ? (
-                      <>
-                        <img src={item.thumbnail} alt={item.alt} className="h-full w-full object-cover" />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                          <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-slate-950/55 to-transparent px-5 py-4 text-left">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/75">
+                        Sri Vari Travels
+                      </p>
+                      <p className="mt-1 text-sm text-white/90">
+                        {activeIndex + 1} / {vehicleGallery.length}
+                      </p>
+                      {activeImage.isVideo ? (
+                        <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
+                          <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                           </svg>
+                          Inside Tour Video
                         </div>
-                      </>
-                    ) : (
-                      <img src={item.image} alt={item.alt} className="h-full w-full object-cover" />
-                    )}
+                      ) : null}
+                    </div>
+
+                    {activeImage.isVideo ? (
+                      <div className="rounded-full bg-white/20 p-3 backdrop-blur">
+                        <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                        </svg>
+                      </div>
+                    ) : null}
                   </div>
-                  <div>
-                    <p className="font-semibold text-slate-900">{item.title}</p>
-                    <p className="mt-1 text-sm text-slate-500">Tap to see in large view.</p>
-                  </div>
-                </button>
-              </Reveal>
-            ))}
-          </div>
+                </motion.button>
+              </div>
+
+              <div className="mt-5 flex items-center justify-between gap-4 px-1">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-700">
+                    Gallery strip
+                  </p>
+                  <p className="mt-1 text-sm text-slate-500">Swipe the main image or choose any thumbnail below.</p>
+                </div>
+                <div className="hidden rounded-full bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700 sm:block">
+                  {vehicleGallery.length} items
+                </div>
+              </div>
+
+              <div className="mt-5 overflow-x-auto pb-2">
+                <div className="flex min-w-max gap-4">
+                  {vehicleGallery.map((item, index) => {
+                    const preview = item.isVideo ? item.thumbnail : item.image
+
+                    return (
+                      <Reveal key={item.title} delay={index * 0.04}>
+                        <button
+                          type="button"
+                          onClick={() => setActiveIndex(index)}
+                          className={`relative h-24 w-28 shrink-0 overflow-hidden rounded-[22px] border-2 bg-white transition hover:-translate-y-1 sm:h-28 sm:w-36 ${
+                            activeIndex === index
+                              ? 'border-brand-400 shadow-soft'
+                              : 'border-transparent opacity-80 hover:opacity-100'
+                          }`}
+                          aria-label={`Open gallery image ${index + 1}`}
+                        >
+                          <img src={preview} alt={item.alt} className="h-full w-full object-cover" />
+                          {item.isVideo ? (
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                                <svg className="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                                </svg>
+                              </div>
+                              <div className="absolute bottom-2 left-2 rounded-full bg-slate-950/70 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+                                Inside Tour
+                              </div>
+                            </>
+                          ) : null}
+                        </button>
+                      </Reveal>
+                    )
+                  })}
+                </div>
+              </div>
+            </article>
+          </Reveal>
         </div>
       </div>
 

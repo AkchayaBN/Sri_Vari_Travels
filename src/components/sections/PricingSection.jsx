@@ -11,7 +11,6 @@ export function PricingSection() {
             eyebrow="Pricing"
             title="Simple pricing for your travel needs."
             subtitle="உங்கள் பயணத்திற்கு எளிய கட்டண விவரம்"
-            description="You can show daily rent, kilometer rate, and extra charges here."
             align="center"
           />
         </Reveal>
